@@ -6,7 +6,7 @@
 from bot.database import Database
 from bot.localisation import Localisation
 from bot import (
-    UPDATES_CHANNEL,
+    #UPDATES_CHANNEL,
     DATABASE_URL,
     SESSION_NAME
 )
@@ -37,39 +37,6 @@ async def new_join_f(client, message):
 async def help_message_f(client, message):
     if not await db.is_user_exist(message.chat.id):
         await db.add_user(message.chat.id)
-    ## Force Sub ##
-    update_channel = UPDATES_CHANNEL
-    if update_channel:
-        try:
-            user = await client.get_chat_member(update_channel, message.chat.id)
-            if user.status == "kicked":
-               await message.reply_text(
-                   text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-                   parse_mode="markdown",
-                   disable_web_page_preview=True
-               )
-               return
-        except UserNotParticipant:
-            await message.reply_text(
-                text="**Please Join My Updates Channel to use this Bot!**",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
-                        ]
-                    ]
-                ),
-                parse_mode="markdown"
-            )
-            return
-        except Exception:
-            await message.reply_text(
-                text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
-                parse_mode="markdown",
-                disable_web_page_preview=True
-            )
-            return
-    ## Force Sub ##
     await message.reply_text(
         Localisation.HELP_MESSAGE,
         reply_markup=InlineKeyboardMarkup(
