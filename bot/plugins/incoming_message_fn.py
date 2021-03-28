@@ -60,7 +60,7 @@ async def incoming_start_message_f(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('0wner', url='@mikiadarsh25')
+                    InlineKeyboardButton('0wner', url='https://t.me/mikiadarsh25')
                 ],
                 [
                     InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
