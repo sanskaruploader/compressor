@@ -42,7 +42,7 @@ async def help_message_f(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Updates Channel', url='https://t.me/Discovery_Updates')
+                    InlineKeyboardButton('Owner', url='@mikiadarsh25')
                 ],
                 [
                     InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
